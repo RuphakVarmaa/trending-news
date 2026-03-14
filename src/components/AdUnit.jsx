@@ -22,7 +22,7 @@ export default function AdUnit({ slot = "1234567890", format = "auto", layout = 
         ref={adRef}
         className="adsbygoogle"
         style={{ display: "block" }}
-        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+        data-ad-client="ca-pub-4057351734298519"
         data-ad-slot={slot}
         data-ad-format={format}
         data-ad-layout={layout}
