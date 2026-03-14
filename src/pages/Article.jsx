@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { InArticleAd, SidebarAd } from "../components/AdUnit";
@@ -6,6 +7,25 @@ import AdUnit from "../components/AdUnit";
 export default function Article() {
   const { state } = useLocation();
   const article = state?.article;
+
+  // Dynamic SEO
+  useEffect(() => {
+    if (!article) return;
+    document.title = `${article.title} - Trending News`;
+    const setMeta = (name, content) => {
+      let el = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
+      if (!el) { el = document.createElement("meta"); el.setAttribute(name.startsWith("og:") || name.startsWith("twitter:") ? "property" : "name", name); document.head.appendChild(el); }
+      el.setAttribute("content", content);
+    };
+    setMeta("description", article.description);
+    setMeta("og:title", article.title);
+    setMeta("og:description", article.description);
+    setMeta("og:image", article.image);
+    setMeta("twitter:title", article.title);
+    setMeta("twitter:description", article.description);
+    setMeta("twitter:image", article.image);
+    return () => { document.title = "Trending News - Latest Car Prices, Tech Reviews & Auto News India 2026"; };
+  }, [article]);
 
   if (!article) {
     return (
