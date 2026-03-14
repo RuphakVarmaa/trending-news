@@ -28,12 +28,6 @@ export default function AdUnit({ slot = "1234567890", format = "auto", layout = 
         data-ad-layout={layout}
         data-full-width-responsive="true"
       />
-      {/* Placeholder shown during development */}
-      <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center text-gray-400 text-sm">
-        <p className="font-semibold">Google AdSense Ad Unit</p>
-        <p>Slot: {slot} | Format: {format}</p>
-        <p className="text-xs mt-1">Replace ca-pub-XXXX in index.html with your publisher ID</p>
-      </div>
     </div>
   );
 }
